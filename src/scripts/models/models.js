@@ -3,6 +3,18 @@ import $ from 'jquery'
 import {app_name} from '../app'
 
 
+//Create Backbone Model to store Persistant Todo List Data
+	export const TodoModel = Backbone.Model.extend({
+		url: '/api/todoListApp'
+	})
+
+//Create Backbone Collection to store Models
+	export const TodoCollection = Backbone.Collection.extend({
+		model: TodoModel
+		url: '/api/todoListApp'
+	})
+
+
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 
@@ -47,6 +59,7 @@ User.getCurrentUser = function() {
 
 
 export { User }
+
 
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
