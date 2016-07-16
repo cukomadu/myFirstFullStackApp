@@ -44,5 +44,5 @@ module.exports = {
   User: createModel('User', usersSchema),
   Post: createModel('Post', postsSchema),
   //Export the todolist schema create above so its globally accessible in other files.
-  Task: createModel('Task', todoListSchema)
+  Task: createModel('Task', tasksSchema)
 }

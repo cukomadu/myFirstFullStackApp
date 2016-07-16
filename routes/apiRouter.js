@@ -5,6 +5,45 @@ let helpers = require('../config/helpers.js')
 let User = require('../db/schema.js').User
 let Post = require('../db/schema.js').Post
 
+//Import Task Schema created in db/schema.js
+let Task = require('../db/schema.js').Task
+
+//--------------------------------------------------------------
+// Read Many - API Get Request to read from the todolist database
+//--------------------------------------------------------------
+
+//.get is a method in express for creating get requests to an API. It's setup to respond to a get request. 
+//.get returns response data from the server
+//.find is a mongoose method for query a database or fetching data from a server
+// Task.find sends a query from the client to the server and wraps the response in json
+// err is a mongo err that is returned if an invalid route is requested otherwise a response data is sent back
+apiRouter.get('/todoListApp', function(request, response){
+  Task.find(request.query, function(err, results){
+    if(err){
+      return response.json(err)
+    }
+    response.json(results)
+  })
+
+})
+
+//-------------------------------------------------------------------------
+// Create One - API Post Request to write new task to the todolist database
+//-------------------------------------------------------------------------
+
+//create a new instance of the Task Schema created in db/schema.js and pass new content. 
+//New content is stored in request.body. Invoke the save method to save new Task to the database
+//If err occurs, send error message to user otherwise send message with new Task.
+apiRouter.post('/todoListApp', function(request, response){
+  let newTask = new Task(request.body)
+  newTask.save(function(err){
+    if(err){
+      return response.json(err)
+    }
+    response.json(newTask)
+  })
+})
+
 
 apiRouter
   //fetch many
