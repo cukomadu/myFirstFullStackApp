@@ -6,6 +6,11 @@ import {User} from './models/models'
 
 const app = function() {
 
+	//Create Backbone Model to store Persistant Data
+	const TodoListModel = Backbone.Model.extend({
+		url: '/api/todoListApp'
+	})
+
 }
 
 // x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..
