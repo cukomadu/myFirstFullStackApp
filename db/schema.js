@@ -16,6 +16,15 @@ const postsSchema = new Schema({
              }
 })
 
+
+//-----------------
+// TASKS
+//-----------------
+// create data structure for how the todo list tasks data will be stored in the todolist database
+const tasksSchema = new Schema({
+  taskName: {type: String}
+})
+
 // ----------------------
 // USERS
 // ----------------------
@@ -33,5 +42,7 @@ const usersSchema = new Schema({
 
 module.exports = {
   User: createModel('User', usersSchema),
-  Post: createModel('Post', postsSchema)
+  Post: createModel('Post', postsSchema),
+  //Export the todolist schema create above so its globally accessible in other files.
+  Task: createModel('Task', todoListSchema)
 }
